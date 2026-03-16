@@ -67,6 +67,12 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* What is SROI */}
+      <WhatIsSROI />
+
+      {/* SROI Ratio */}
+      <SROIRatio />
     </div>
   );
 };
