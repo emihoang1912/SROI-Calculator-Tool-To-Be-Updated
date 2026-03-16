@@ -1,0 +1,636 @@
+/*
+Theme Name: SROI Calculator
+Theme URI: https://example.com/sroi-calculator
+Author: SROI Team
+Author URI: https://example.com
+Description: A clean, modern single-page WordPress theme for Social Return on Investment (SROI) calculation. Features a hero section, feature cards, SROI ratio formula display, theme selection cards, and a footer. Fully responsive and lightweight.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sroi-calculator
+Tags: one-column, custom-logo, custom-menu, featured-images, translation-ready
+*/
+
+/* ===== CSS Custom Properties ===== */
+:root {
+  --color-bg: #ffffff;
+  --color-fg: hsl(220, 20%, 14%);
+  --color-primary: hsl(162, 63%, 35%);
+  --color-primary-light: hsl(162, 63%, 35%, 0.1);
+  --color-primary-border: hsl(162, 63%, 35%, 0.2);
+  --color-primary-faded: hsl(162, 63%, 35%, 0.05);
+  --color-secondary-bg: hsl(150, 30%, 96%);
+  --color-muted: hsl(220, 10%, 50%);
+  --color-muted-light: hsl(220, 10%, 50%, 0.7);
+  --color-border: hsl(150, 20%, 90%);
+  --color-step-border: hsl(150, 20%, 85%);
+  --color-step-fg: hsl(220, 10%, 40%);
+  --color-cta-bg: hsl(220, 20%, 14%);
+  --color-cta-fg: #ffffff;
+  --radius: 0.75rem;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.section--center {
+  text-align: center;
+}
+
+/* ===== Background Blobs ===== */
+.bg-blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-blobs__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+}
+
+.bg-blobs__blob--1 {
+  width: 500px;
+  height: 500px;
+  top: -128px;
+  left: -128px;
+  background: var(--color-primary-faded);
+}
+
+.bg-blobs__blob--2 {
+  width: 400px;
+  height: 400px;
+  top: 25%;
+  right: -128px;
+  background: hsl(162, 63%, 35%, 0.03);
+}
+
+/* ===== Header / Navigation ===== */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 1.5rem;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .custom-logo {
+  height: 32px;
+  width: auto;
+}
+
+.site-header .site-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.site-header .site-title a {
+  color: inherit;
+}
+
+/* Navigation Menu */
+.main-navigation ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.main-navigation a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  transition: color 0.2s;
+}
+
+.main-navigation a:hover {
+  color: var(--color-fg);
+}
+
+/* ===== Hero Badge ===== */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-primary-border);
+  background: var(--color-primary-faded);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.hero-badge svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.hero__inner {
+  max-width: 56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__title {
+  margin-top: 2.5rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-fg);
+}
+
+.hero__title span {
+  color: var(--color-primary);
+}
+
+.hero__description {
+  margin-top: 2rem;
+  max-width: 580px;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+/* ===== CTA Button ===== */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-fg);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+}
+
+.btn-cta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cta:active {
+  transform: scale(0.98);
+}
+
+.btn-cta svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ===== Step Indicator ===== */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 5rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-step-border);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-step-fg);
+}
+
+.step__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-step-fg);
+}
+
+/* ===== What is SROI Section ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feature-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-fg);
+  stroke-width: 1.5;
+}
+
+.feature-card__title {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.feature-card__desc {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* ===== Section Headings ===== */
+.section__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+}
+
+.section__title strong {
+  font-weight: 700;
+}
+
+.section__subtitle {
+  max-width: 640px;
+  margin: 1.25rem auto 0;
+  font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+/* ===== SROI Ratio Section ===== */
+.sroi-ratio {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+.sroi-ratio__card {
+  background: var(--color-secondary-bg);
+  border-radius: 1.5rem;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .sroi-ratio__card {
+    padding: 4rem;
+  }
+}
+
+.sroi-ratio__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+}
+
+.sroi-ratio__formula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.sroi-ratio__name {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--color-fg);
+}
+
+.sroi-ratio__equals {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-muted);
+}
+
+.sroi-ratio__fraction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sroi-ratio__numerator {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.sroi-ratio__divider {
+  width: 100%;
+  height: 1px;
+  background: hsl(220, 10%, 50%, 0.3);
+  margin: 0.25rem 0;
+}
+
+.sroi-ratio__denominator {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--color-muted);
+}
+
+.sroi-ratio__example {
+  max-width: 580px;
+  margin: 2rem auto 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+/* ===== Choose Theme Section ===== */
+.themes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .themes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.theme-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: 2rem;
+  transition: box-shadow 0.2s;
+}
+
+.theme-card--active {
+  border-color: var(--color-primary-border);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-card--locked {
+  opacity: 0.7;
+}
+
+.theme-card__badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.theme-card__badge svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.theme-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+
+.theme-card--active .theme-card__icon {
+  background: var(--color-primary-light);
+}
+
+.theme-card--locked .theme-card__icon {
+  background: var(--color-secondary-bg);
+}
+
+.theme-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke-width: 1.5;
+}
+
+.theme-card--active .theme-card__icon svg {
+  color: var(--color-primary);
+}
+
+.theme-card--locked .theme-card__icon svg {
+  color: var(--color-muted-light);
+}
+
+.theme-card__title {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.theme-card--active .theme-card__title {
+  color: var(--color-fg);
+}
+
+.theme-card--locked .theme-card__title {
+  color: var(--color-muted);
+}
+
+.theme-card__desc {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.theme-card--active .theme-card__desc {
+  color: var(--color-muted);
+}
+
+.theme-card--locked .theme-card__desc {
+  color: var(--color-muted-light);
+}
+
+.theme-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: opacity 0.2s;
+}
+
+.theme-card__link:hover {
+  opacity: 0.8;
+}
+
+.theme-card__link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-fg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 0.875rem;
+  color: hsl(220, 10%, 50%);
+}
+
+/* ===== Utility: Screen Reader Only ===== */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+
+/* ===== Responsive ===== */
+@media (max-width: 767px) {
+  .steps {
+    gap: 1.5rem;
+  }
+
+  .step__number {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+
+  .main-navigation {
+    display: none;
+  }
+}
