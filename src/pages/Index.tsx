@@ -2,10 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import HeroBadge from "@/components/HeroBadge";
 import StepIndicator from "@/components/StepIndicator";
+import WhatIsSROI from "@/components/WhatIsSROI";
+import SROIRatio from "@/components/SROIRatio";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background">
+    <div className="relative overflow-hidden bg-background">
       {/* Background gradient blobs */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl" />
