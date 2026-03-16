@@ -1,0 +1,55 @@
+/* 
+ * Custom CSS — additional styles for the SROI Calculator theme.
+ * Enqueued via functions.php.
+ */
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* WordPress admin bar offset */
+body.admin-bar .site-header {
+  top: 32px;
+}
+
+@media (max-width: 782px) {
+  body.admin-bar .site-header {
+    top: 46px;
+  }
+}
+
+/* WordPress alignment classes */
+.alignleft {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.alignright {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .site-header,
+  .site-footer,
+  .btn-cta {
+    display: none;
+  }
+}
