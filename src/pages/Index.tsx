@@ -4,6 +4,8 @@ import HeroBadge from "@/components/HeroBadge";
 import StepIndicator from "@/components/StepIndicator";
 import WhatIsSROI from "@/components/WhatIsSROI";
 import SROIRatio from "@/components/SROIRatio";
+import ChooseTheme from "@/components/ChooseTheme";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
