@@ -75,6 +75,12 @@ const Index = () => {
 
       {/* SROI Ratio */}
       <SROIRatio />
+
+      {/* Choose Theme */}
+      <ChooseTheme />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
