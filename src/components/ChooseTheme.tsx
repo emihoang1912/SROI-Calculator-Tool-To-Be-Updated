@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Lock, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const themes = [
   {
