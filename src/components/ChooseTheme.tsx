@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Lock, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const themes = [
   {
@@ -20,6 +21,7 @@ const themes = [
 ];
 
 const ChooseTheme = () => {
+  const navigate = useNavigate();
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-5xl text-center">
@@ -90,7 +92,10 @@ const ChooseTheme = () => {
               </p>
 
               {theme.active && (
-                <button className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80">
+                <button
+                  onClick={() => navigate("/calculator/describe")}
+                  className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                >
                   Get Started
                   <ArrowRight className="h-4 w-4" />
                 </button>
