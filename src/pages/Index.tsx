@@ -9,6 +9,7 @@ import ChooseTheme from "@/components/ChooseTheme";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Background gradient blobs */}
