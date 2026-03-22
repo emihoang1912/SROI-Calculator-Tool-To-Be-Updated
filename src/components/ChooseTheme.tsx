@@ -92,7 +92,10 @@ const ChooseTheme = () => {
               </p>
 
               {theme.active && (
-                <button className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80">
+                <button
+                  onClick={() => navigate("/calculator/describe")}
+                  className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                >
                   Get Started
                   <ArrowRight className="h-4 w-4" />
                 </button>
