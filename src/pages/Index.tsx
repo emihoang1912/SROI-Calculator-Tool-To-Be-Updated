@@ -55,7 +55,10 @@ const Index = () => {
             transition={{ delay: 0.3, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             className="mt-10"
           >
-            <button className="inline-flex items-center gap-3 rounded-full bg-cta px-8 py-4 text-base font-medium text-cta-foreground shadow-lg transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]">
+            <button
+              onClick={() => navigate("/calculator/describe")}
+              className="inline-flex items-center gap-3 rounded-full bg-cta px-8 py-4 text-base font-medium text-cta-foreground shadow-lg transition-all duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+            >
               Start Your SROI Journey
               <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
             </button>
