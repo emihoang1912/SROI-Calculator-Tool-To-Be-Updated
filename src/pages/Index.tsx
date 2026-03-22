@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import HeroBadge from "@/components/HeroBadge";
 import StepIndicator from "@/components/StepIndicator";
 import WhatIsSROI from "@/components/WhatIsSROI";
