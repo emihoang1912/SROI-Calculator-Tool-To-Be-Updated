@@ -38,7 +38,7 @@ get_header();
             </p>
 
             <!-- CTA -->
-            <a href="<?php echo esc_url( get_theme_mod( 'sroi_hero_cta_link', '#choose-theme' ) ); ?>" class="btn-cta animate-fade-in-up animate-delay-3">
+            <a href="<?php echo esc_url( get_theme_mod( 'sroi_hero_cta_link', '#choose-theme' ) ); ?>" class="btn-cta animate-fade-in-up animate-delay-3" id="hero-cta">
                 <?php echo esc_html( get_theme_mod( 'sroi_hero_cta', 'Start Your SROI Journey' ) ); ?>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
