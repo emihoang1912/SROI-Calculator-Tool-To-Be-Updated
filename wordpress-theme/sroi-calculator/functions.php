@@ -66,6 +66,14 @@ function sroi_enqueue_assets() {
         wp_get_theme()->get( 'Version' )
     );
 
+    // Calculator CSS
+    wp_enqueue_style(
+        'sroi-calculator-css',
+        get_template_directory_uri() . '/assets/css/calculator.css',
+        array( 'sroi-style' ),
+        wp_get_theme()->get( 'Version' )
+    );
+
     // Theme JS
     wp_enqueue_script(
         'sroi-scripts',
@@ -74,6 +82,25 @@ function sroi_enqueue_assets() {
         wp_get_theme()->get( 'Version' ),
         true
     );
+
+    // jsPDF (CDN) — only on calculator page
+    if ( is_page_template( 'page-calculator.php' ) ) {
+        wp_enqueue_script(
+            'jspdf',
+            'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+            array(),
+            '2.5.1',
+            true
+        );
+
+        wp_enqueue_script(
+            'sroi-calculator-js',
+            get_template_directory_uri() . '/assets/js/calculator.js',
+            array( 'jspdf' ),
+            wp_get_theme()->get( 'Version' ),
+            true
+        );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'sroi_enqueue_assets' );
 
