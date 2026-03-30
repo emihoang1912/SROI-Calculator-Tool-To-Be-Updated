@@ -174,7 +174,7 @@ get_header();
                         <p class="theme-card__desc"><?php echo esc_html( $theme['desc'] ); ?></p>
 
                         <?php if ( $theme['active'] ) : ?>
-                            <a href="<?php echo esc_url( home_url( '/?page_id=' ) ); ?>" class="theme-card__link theme-card__calculator-link">
+                            <a href="<?php echo esc_url( sroi_get_calculator_url() ); ?>" class="theme-card__link theme-card__calculator-link">
                                 <?php esc_html_e( 'Get Started', 'sroi-calculator' ); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                             </a>
