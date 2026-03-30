@@ -198,3 +198,22 @@ function sroi_customize_register( $wp_customize ) {
     ) );
 }
 add_action( 'customize_register', 'sroi_customize_register' );
+
+/**
+ * Get the Calculator page URL (Multisite-safe)
+ */
+function sroi_get_calculator_url() {
+    $pages = get_pages( array(
+        'meta_key'   => '_wp_page_template',
+        'meta_value' => 'page-calculator.php',
+        'number'     => 1,
+    ) );
+    if ( ! empty( $pages ) ) {
+        return get_permalink( $pages[0]->ID );
+    }
+    $page = get_page_by_path( 'calculator' );
+    if ( $page ) {
+        return get_permalink( $page->ID );
+    }
+    return home_url( '/calculator/' );
+}
